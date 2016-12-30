@@ -1,6 +1,9 @@
 set nocompatible              " required
 filetype off                  " required
 
+let python_highlight_all=1
+syntax on
+
 syntax enable
 set encoding=utf-8
 set nu
@@ -68,6 +71,19 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " nerdTreeTabs
 let g:nerdtree_tabs_open_on_console_startup=1
 
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -77,6 +93,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -90,6 +108,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-repeat'
 Plugin 'majutsushi/tagbar'
+Plugin 'shougo/neocomplete.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
