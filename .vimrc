@@ -61,15 +61,19 @@ au BufNewFile,BufRead *.js,*.html,*.css
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
+au BufNewFile,BufRead *.json
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
 
 " plugin config
 "
 " nerdTree
 autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " nerdTreeTabs
 let g:nerdtree_tabs_open_on_console_startup=1
+let NERDTreeShowHidden=1
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -83,6 +87,9 @@ let g:syntastic_check_on_wq = 0
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
